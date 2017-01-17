@@ -300,6 +300,7 @@
 				AA1372591E2D1560009E3BED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

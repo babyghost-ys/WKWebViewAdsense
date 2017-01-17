@@ -17,12 +17,12 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let frame = CGRect(x: 0.0, y: 0.0, width: self.internalWebView.bounds.width, height: self.internalWebView.bounds.height)
+        let frame = CGRect(x: 0, y: 0, width: internalWebView.bounds.width, height: internalWebView.bounds.height)
         webView.frame = frame
         webView.uiDelegate = self
         webView.navigationDelegate = self
         self.internalWebView.addSubview(webView)
-        webView.load(URLRequest(url: URL(string: "http://www.9to5mac.com/")!))
+        webView.load(URLRequest(url: URL(string: "http://en.winandmac.com/")!))
     }
     
     override func didReceiveMemoryWarning() {
