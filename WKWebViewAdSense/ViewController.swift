@@ -29,6 +29,17 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        let requestedURL = navigationAction.request.url
+        
+        if navigationAction.navigationType == .linkActivated{
+            print("You have clicked the requested URL \(navigationAction.request.url)")
+            UIApplication.shared.open(requestedURL!, options: [:], completionHandler: nil)
+            decisionHandler(.cancel)
+        }
+        decisionHandler(.allow)
+    }
 
 
 }
