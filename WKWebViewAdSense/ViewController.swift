@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate{
-
+    
     @IBOutlet weak var internalWebView: UIView!
     var webView = WKWebView()
     
@@ -24,7 +24,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate{
         self.internalWebView.addSubview(webView)
         webView.load(URLRequest(url: URL(string: "http://www.9to5mac.com/")!))
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -34,13 +34,15 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate{
         let requestedURL = navigationAction.request.url
         
         if navigationAction.navigationType == .linkActivated{
-            print("You have clicked the requested URL \(navigationAction.request.url)")
-            UIApplication.shared.open(requestedURL!, options: [:], completionHandler: nil)
-            decisionHandler(.cancel)
+            print("You have clicked the requested URL \(requestedURL)")
+            if requestedURL?.absoluteString.contains("doubleclick.net") == true{
+                UIApplication.shared.open(requestedURL!, options: [:], completionHandler: nil)
+                decisionHandler(.cancel)
+            }
         }
         decisionHandler(.allow)
     }
-
-
+    
+    
 }
 
